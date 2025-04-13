@@ -5,7 +5,8 @@ import os
 import sys
 from globals import *
 from scene import *
-
+from player import Player
+from texturedata import atlas_texture_data, solo_texture_data
 
 class game:
     def __init__(self):
@@ -15,6 +16,7 @@ class game:
         self.running = True
 
         self.scene = Scene(self)
+        self.player = Player([self.scene.sprites])
 
     def run(self):
         while self.running:
@@ -40,6 +42,7 @@ class game:
         sys.exit()
 
 if __name__ == "__main__":
+    textures[name] = pygame.Surface.subsurface(atlas_image, pygame.Rect(data['position'][0], data['position'][1], data['size'], data['size']))
     game = game()
     game.run()
 
